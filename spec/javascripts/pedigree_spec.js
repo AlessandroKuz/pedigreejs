@@ -418,7 +418,7 @@ describe('Test pedigree SVG ', function() {
             expect(function() {widgets.delete_node_dataset(newopts.dataset, dan.data, newopts)}).toThrow(new Error(err));
 			// message dialog
 			expect($('#msgDialog').length).toBe(1);
-			expect($('#msgDialog').text()).toBe("Deletion of this pedigree member is disallowed.");
+			expect($('#msgDialog').text()).toBe("Eliminazione di questo membro del pedigree non è consentita.");
 		});
 
 /*		it('should show confirmation dialog if splitting pedigree', function() {
