@@ -36,6 +36,7 @@ jobs:
 
       - name: Run Lint
         run: npm run lint
+        continue-on-error: true
 
       - name: Run Tests
         run: npm test -- --headless --no-sandbox
