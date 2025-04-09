@@ -448,6 +448,7 @@ export function build(options) {
 	init_zoom(opts, svg);
 	// drag nodes
 	if(opts.dragNode) init_dragging(opts, node);
+	window.opts = opts;
 	return opts;
 }
 

@@ -11,18 +11,18 @@ import {current as pedcache_current} from './pedcache.js';
 
 
 // handle family history change events (undo/redo/delete)
-$(document).on('fhChange', function(e, opts){
-	try {
-		let id = $('#id_name').val();  // get name from hidden field
-		let node = getNodeByName(pedcache_current(opts), id)
-		if(node === undefined)
-			$('form > fieldset').prop("disabled", true);
-		else
-			$('form > fieldset').prop('disabled', false);
-	} catch(err) {
-		console.warn(err);
-	}
-})
+// $(document).on('fhChange', function(e, opts){
+// 	try {
+// 		let id = $('#id_name').val();  // get name from hidden field
+// 		let node = getNodeByName(pedcache_current(opts), id)
+// 		if(node === undefined)
+// 			$('form > fieldset').prop("disabled", true);
+// 		else
+// 			$('form > fieldset').prop('disabled', false);
+// 	} catch(err) {
+// 		console.warn(err);
+// 	}
+// })
 
 // update status field and age label - 0 = alive, 1 = dead
 export function updateStatus(status) {

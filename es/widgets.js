@@ -490,6 +490,7 @@ function openEditDialog(opts, d) {
 
 	$('#node_properties input[type=radio], #node_properties input[type=checkbox], #node_properties input[type=text], #node_properties input[type=number]').change(function() {
 		save(opts);
+		window.opts = opts;
     });
 	return;
 }

@@ -2512,15 +2512,18 @@ var pedigreejs = (function (exports) {
 
 
 	// handle family history change events (undo/redo/delete)
-	$(document).on('fhChange', function (e, opts) {
-	  try {
-	    let id = $('#id_name').val(); // get name from hidden field
-	    let node = getNodeByName(current(opts), id);
-	    if (node === undefined) $('form > fieldset').prop("disabled", true);else $('form > fieldset').prop('disabled', false);
-	  } catch (err) {
-	    console.warn(err);
-	  }
-	});
+	// $(document).on('fhChange', function(e, opts){
+	// 	try {
+	// 		let id = $('#id_name').val();  // get name from hidden field
+	// 		let node = getNodeByName(pedcache_current(opts), id)
+	// 		if(node === undefined)
+	// 			$('form > fieldset').prop("disabled", true);
+	// 		else
+	// 			$('form > fieldset').prop('disabled', false);
+	// 	} catch(err) {
+	// 		console.warn(err);
+	// 	}
+	// })
 
 	// update status field and age label - 0 = alive, 1 = dead
 	function updateStatus(status) {
@@ -3146,6 +3149,7 @@ var pedigreejs = (function (exports) {
 	  $('#node_properties').dialog('open');
 	  $('#node_properties input[type=radio], #node_properties input[type=checkbox], #node_properties input[type=text], #node_properties input[type=number]').change(function () {
 	    save(opts);
+	    window.opts = opts;
 	  });
 	  return;
 	}
@@ -4015,6 +4019,7 @@ var pedigreejs = (function (exports) {
 	  init_zoom(opts, svg);
 	  // drag nodes
 	  if (opts.dragNode) init_dragging(opts, node);
+	  window.opts = opts;
 	  return opts;
 	}
 	function has_gender(sex) {
