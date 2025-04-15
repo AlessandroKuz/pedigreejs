@@ -1781,19 +1781,19 @@ var pedigreejs = (function (exports) {
 	**/
 
 	function addIO(opts) {
-	  $('#load').change(function (e) {
+	  $('#load').on('change', function (e) {
 	    load(e, opts);
 	  });
-	  $('#save').click(function (_e) {
+	  $('#save').on('click', function () {
 	    save$1(opts);
 	  });
-	  $('#print').click(function (_e) {
+	  $('#print').on('click', function () {
 	    print(get_printable_svg(opts));
 	  });
-	  $('#svg_download').click(function (_e) {
+	  $('#svg_download').on('click', function () {
 	    svg_download(get_printable_svg(opts));
 	  });
-	  $('#png_download, .fa-file-image').click(function (_e) {
+	  $('#png_download, .fa-file-image').on('click', function () {
 	    let resolution = 4;
 	    img_download(opts, resolution, "image/png");
 	  });
@@ -3147,7 +3147,7 @@ var pedigreejs = (function (exports) {
 	  table += "</table>";
 	  $('#node_properties').html(table);
 	  $('#node_properties').dialog('open');
-	  $('#node_properties input[type=radio], #node_properties input[type=checkbox], #node_properties input[type=text], #node_properties input[type=number]').change(function () {
+	  $('#node_properties input[type=radio], #node_properties input[type=checkbox], #node_properties input[type=text], #node_properties input[type=number]').on('change', function () {
 	    save(opts);
 	    window.opts = opts;
 	  });

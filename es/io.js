@@ -12,23 +12,23 @@ import {get_bounds} from './zoom.js';
 
 
 export function addIO(opts) {
-	$('#load').change(function(e) {
+	$('#load').on('change', function(e) {
 		load(e, opts);
 	});
 
-	$('#save').click(function(_e) {
+	$('#save').on('click', function() {
 		save(opts);
 	});
 
-	$('#print').click(function(_e) {
+	$('#print').on('click', function() {
 		print(get_printable_svg(opts));
 	});
 
-	$('#svg_download').click(function(_e) {
+	$('#svg_download').on('click', function() {
 		svg_download(get_printable_svg(opts));
 	});
 
-	$('#png_download, .fa-file-image').click(function(_e) {
+	$('#png_download, .fa-file-image').on('click', function() {
 		let resolution = 4;
 		img_download(opts, resolution, "image/png");
 	});
