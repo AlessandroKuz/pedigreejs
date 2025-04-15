@@ -29,14 +29,14 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+ssh://git@github.com/CCGE-BOADICEA/pedigreejs.git"
+		"url": "git+ssh://git@github.com/AlessandroKuz/pedigreejs.git"
 	},
 	"author": "",
 	"license": "GPL-3.0",
 	"bugs": {
-		"url": "https://github.com/CCGE-BOADICEA/pedigreejs/issues"
+		"url": "https://github.com/AlessandroKuz/pedigreejs/issues"
 	},
-	"homepage": "https://ccge-boadicea.github.io/pedigreejs/",
+	"homepage": "https://AlessandroKuz.github.io/pedigreejs/",
 	"devDependencies": {
 		"@babel/core": "^7.26.10",
 		"@babel/eslint-parser": "^7.26.10",
