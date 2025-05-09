@@ -1772,6 +1772,9 @@ var pedigreejs = (function (exports) {
 	function addIO(opts) {
 	  $('#load').on('change', function (e) {
 	    load(e, opts);
+	    setTimeout(function () {
+	      scale_to_fit(opts);
+	    }, 1000);
 	  });
 	  $('#save').on('click', function () {
 	    save$1(opts);

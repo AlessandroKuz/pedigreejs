@@ -8,12 +8,15 @@
 import * as utils from './utils.js';
 import * as pedcache from './pedcache.js';
 import {readCanRisk, cancers, genetic_test1, pathology_tests} from './canrisk_file.js';
-import {get_bounds} from './zoom.js';
+import {get_bounds, scale_to_fit} from './zoom.js';
 
 
 export function addIO(opts) {
 	$('#load').on('change', function(e) {
 		load(e, opts);
+		setTimeout(function() {
+			scale_to_fit(opts);
+		}, 1000);
 	});
 
 	$('#save').on('click', function() {
