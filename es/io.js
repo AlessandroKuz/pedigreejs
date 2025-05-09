@@ -20,7 +20,15 @@ export function addIO(opts) {
 	});
 
 	$('#save').on('click', function() {
-		save(opts);
+		let msp = $('#id_msp').val();
+		let pedName;
+		if (!msp) {
+			pedName = 'MAO';
+		} else {
+			pedName = `MAO-${msp}`;
+		}
+		let filename = `pedigree-${pedName}.txt`;
+		save(opts, filename);
 	});
 
 	$('#print').on('click', function() {
@@ -289,9 +297,9 @@ export function save_file(opts, content, filename, type){
 	}
 }
 
-function save(opts){
+function save(opts, filename){
 	let content = JSON.stringify(pedcache.current(opts));
-	save_file(opts, content);
+	save_file(opts, content, filename);
 }
 
 function canrisk_validation(opts) {

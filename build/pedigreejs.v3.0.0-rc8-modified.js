@@ -1777,7 +1777,15 @@ var pedigreejs = (function (exports) {
 	    }, 1000);
 	  });
 	  $('#save').on('click', function () {
-	    save$1(opts);
+	    let msp = $('#id_msp').val();
+	    let pedName;
+	    if (!msp) {
+	      pedName = 'MAO';
+	    } else {
+	      pedName = `MAO-${msp}`;
+	    }
+	    let filename = `pedigree-${pedName}.txt`;
+	    save$1(opts, filename);
 	  });
 	  $('#print').on('click', function () {
 	    print(get_printable_svg(opts));
@@ -2041,9 +2049,9 @@ var pedigreejs = (function (exports) {
 	    }, 0);
 	  }
 	}
-	function save$1(opts) {
+	function save$1(opts, filename) {
 	  let content = JSON.stringify(current(opts));
-	  save_file(opts, content);
+	  save_file(opts, content, filename);
 	}
 	function canrisk_validation(opts) {
 	  $.each(opts.dataset, function (_idx, p) {
