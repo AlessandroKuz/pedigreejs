@@ -39,7 +39,7 @@ export function addWidgets(opts, node) {
 		.attr("x", font_size/3)
 		.attr("y", font_size*1.5)
 		.text("\uf096 ");
-	let square_title = square.append("svg:title").text("add male");
+	let square_title = square.append("svg:title").text("Aggiungi sesso maschile");
 
 	let circle = popup_selection.append("text")  // female
 		.attr('font-family', 'FontAwesome')
@@ -50,7 +50,7 @@ export function addWidgets(opts, node) {
 		.attr("x", font_size*1.71)
 		.attr("y", font_size*1.5)
 		.text("\uf10c ");
-	let circle_title = circle.append("svg:title").text("add female");
+	let circle_title = circle.append("svg:title").text("Aggiungi sesso femminile");
 
 	let unspecified = popup_selection.append("text")  // unspecified
 		.attr('font-family', 'FontAwesome')
@@ -61,7 +61,7 @@ export function addWidgets(opts, node) {
 		.attr("y", -font_size*0.065)
 		.attr("class", "popup_selection fa-unspecified popup_selection_rotate45 persontype")
 		.text("\uf096 ");
-	unspecified.append("svg:title").text("add unspecified");
+	unspecified.append("svg:title").text("Aggiungi sesso non specificato");
 
 	let dztwin = popup_selection.append("text")  // dizygotic twins
 		.attr('font-family', 'FontAwesome')
@@ -72,7 +72,7 @@ export function addWidgets(opts, node) {
 		.attr("x", font_size*4.62)
 		.attr("y", font_size*1.5)
 		.text("\uf106 ");
-	dztwin.append("svg:title").text("add dizygotic/fraternal twins");
+	dztwin.append("svg:title").text("Aggiungi gemelli dizigoti (non identici)");
 
 	let mztwin = popup_selection.append("text")  // monozygotic twins
 	.attr('font-family', 'FontAwesome')
@@ -83,7 +83,7 @@ export function addWidgets(opts, node) {
 	.attr("x", font_size*6.4)
 	.attr("y", font_size*1.5)
 	.text("\uf0d8 ");
-	mztwin.append("svg:title").text("add monozygotic/identical twins");
+	mztwin.append("svg:title").text("Aggiungi gemelli monozigoti (identici)");
 
 	let add_person = {};
 	// click the person type selection
@@ -119,14 +119,14 @@ export function addWidgets(opts, node) {
 		  // add tooltips to font awesome widgets
 		  if(add_person.type === 'addsibling'){
 			 if(d3.select(this).classed("fa-square"))
-				  square_title.text("add brother");
+				  square_title.text("Aggiungi fratello");
 			  else
-				  circle_title.text("add sister");
+				  circle_title.text("Aggiungi sorella");
 		  } else if(add_person.type === 'addchild'){
 			  if(d3.select(this).classed("fa-square"))
-				  square_title.text("add son");
+				  square_title.text("Aggiungi figlio");
 			  else
-				  circle_title.text("add daughter");
+				  circle_title.text("Aggiungi figlia");
 		  }
 	  });
 
@@ -164,16 +164,16 @@ export function addWidgets(opts, node) {
 	let fy = opts.symbol_size -2;
 	let off = 0;
 	let widgets = {
-		'addchild':   {'text': '\uf063', 'title': 'add child',   'fx': fx, 'fy': fy},
-		'addsibling': {'text': '\uf234', 'title': 'add sibling', 'fx': fx, 'fy': fy},
-		'addpartner': {'text': '\uf0c1', 'title': 'add partner', 'fx': fx, 'fy': fy},
+		'addchild':   {'text': '\uf063', 'title': 'Aggiungi figlio',   'fx': fx, 'fy': fy},
+		'addsibling': {'text': '\uf234', 'title': 'Aggiungi fratello', 'fx': fx, 'fy': fy},
+		'addpartner': {'text': '\uf0c1', 'title': 'Aggiungi partner', 'fx': fx, 'fy': fy},
 		'addparents': {
-			'text': '\uf062', 'title': 'add parents',
+			'text': '\uf062', 'title': 'Aggiungi genitori',
 			'fx': - 0.75*opts.symbol_size,
 			'fy': - opts.symbol_size + 11
 		},
 		'delete': {
-			'text': 'X', 'title': 'delete',
+			'text': 'X', 'title': 'Elimina',
 			'fx': (opts.symbol_size/2) - 1,
 			'fy': - opts.symbol_size + 12,
 			'styles': {"font-weight": "bold", "fill": "darkred", "font-family": "monospace"}
@@ -181,7 +181,7 @@ export function addWidgets(opts, node) {
 	};
 
 	if(opts.edit) {
-		widgets.settings = {'text': '\uf013', 'title': 'settings', 'fx': (-font_size/2)+2, 'fy': -opts.symbol_size + 11};
+		widgets.settings = {'text': '\uf013', 'title': 'Dettagli', 'fx': (-font_size/2)+2, 'fy': -opts.symbol_size + 11};
 	}
 
 	for(let key in widgets) {
@@ -338,7 +338,7 @@ function drag_handle(opts) {
                 .on("start", dragstart)
                 .on("drag", drag)
                 .on("end", dragstop));
-	dline.append("svg:title").text("drag to create consanguineous partners");
+	dline.append("svg:title").text("Trascina su un altro parente per creare una relazione");
 
 	setLineDragPosition(0, 0, 0, 0);
 
@@ -788,7 +788,7 @@ export function delete_node_dataset(dataset, node, opts, onDone) {
 	if(uc.length > 0) {
 		// check & warn only if this is a new split
 		if(utils.unconnected(opts.dataset).length === 0) {
-			console.error("individui sconnessi dal pedigree ", uc);
+			console.error("Individui sconnessi dal pedigree ", uc);
 			utils.messages("Attenzione", "L'eliminazione dividerà il pedigree. Vuoi procedere?", onDone, opts, dataset);
 			return;
 		}

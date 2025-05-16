@@ -2805,19 +2805,19 @@ var pedigreejs = (function (exports) {
 	  popup_selection.append("rect").attr("class", "popup_selection").attr("rx", 6).attr("ry", 6).attr("transform", "translate(-1000,-100)").style("opacity", 0).attr("width", font_size * 7.9).attr("height", font_size * 2).style("stroke", "darkgrey").attr("fill", "white");
 	  let square = popup_selection.append("text") // male
 	  .attr('font-family', 'FontAwesome').style("opacity", 0).style("font-size", "1.1em").attr("class", "popup_selection fa-square persontype").attr("transform", "translate(-1000,-100)").attr("x", font_size / 3).attr("y", font_size * 1.5).text("\uf096 ");
-	  let square_title = square.append("svg:title").text("add male");
+	  let square_title = square.append("svg:title").text("Aggiungi sesso maschile");
 	  let circle = popup_selection.append("text") // female
 	  .attr('font-family', 'FontAwesome').style("opacity", 0).style("font-size", "1.1em").attr("class", "popup_selection fa-circle persontype").attr("transform", "translate(-1000,-100)").attr("x", font_size * 1.71).attr("y", font_size * 1.5).text("\uf10c ");
-	  let circle_title = circle.append("svg:title").text("add female");
+	  let circle_title = circle.append("svg:title").text("Aggiungi sesso femminile");
 	  let unspecified = popup_selection.append("text") // unspecified
 	  .attr('font-family', 'FontAwesome').style("opacity", 0).style("font-size", "1.1em").attr("transform", "translate(-1000,-100)").attr("x", font_size * 0.065).attr("y", -font_size * 0.065).attr("class", "popup_selection fa-unspecified popup_selection_rotate45 persontype").text("\uf096 ");
-	  unspecified.append("svg:title").text("add unspecified");
+	  unspecified.append("svg:title").text("Aggiungi sesso non specificato");
 	  let dztwin = popup_selection.append("text") // dizygotic twins
 	  .attr('font-family', 'FontAwesome').style("opacity", 0).style("font-size", "1.6em").attr("transform", "translate(-1000,-100)").attr("class", "popup_selection fa-angle-up persontype dztwin").attr("x", font_size * 4.62).attr("y", font_size * 1.5).text("\uf106 ");
-	  dztwin.append("svg:title").text("add dizygotic/fraternal twins");
+	  dztwin.append("svg:title").text("Aggiungi gemelli dizigoti (non identici)");
 	  let mztwin = popup_selection.append("text") // monozygotic twins
 	  .attr('font-family', 'FontAwesome').style("opacity", 0).style("font-size", "1.6em").attr("transform", "translate(-1000,-100)").attr("class", "popup_selection fa-caret-up persontype mztwin").attr("x", font_size * 6.4).attr("y", font_size * 1.5).text("\uf0d8 ");
-	  mztwin.append("svg:title").text("add monozygotic/identical twins");
+	  mztwin.append("svg:title").text("Aggiungi gemelli monozigoti (identici)");
 	  let add_person = {};
 	  // click the person type selection
 	  d3.selectAll(".persontype").on("click", function () {
@@ -2842,9 +2842,9 @@ var pedigreejs = (function (exports) {
 	    d3.selectAll('.popup_selection').style("opacity", 1);
 	    // add tooltips to font awesome widgets
 	    if (add_person.type === 'addsibling') {
-	      if (d3.select(this).classed("fa-square")) square_title.text("add brother");else circle_title.text("add sister");
+	      if (d3.select(this).classed("fa-square")) square_title.text("Aggiungi fratello");else circle_title.text("Aggiungi sorella");
 	    } else if (add_person.type === 'addchild') {
-	      if (d3.select(this).classed("fa-square")) square_title.text("add son");else circle_title.text("add daughter");
+	      if (d3.select(this).classed("fa-square")) square_title.text("Aggiungi figlio");else circle_title.text("Aggiungi figlia");
 	    }
 	  });
 
@@ -2876,31 +2876,31 @@ var pedigreejs = (function (exports) {
 	  let widgets = {
 	    'addchild': {
 	      'text': '\uf063',
-	      'title': 'add child',
+	      'title': 'Aggiungi figlio',
 	      'fx': fx,
 	      'fy': fy
 	    },
 	    'addsibling': {
 	      'text': '\uf234',
-	      'title': 'add sibling',
+	      'title': 'Aggiungi fratello',
 	      'fx': fx,
 	      'fy': fy
 	    },
 	    'addpartner': {
 	      'text': '\uf0c1',
-	      'title': 'add partner',
+	      'title': 'Aggiungi partner',
 	      'fx': fx,
 	      'fy': fy
 	    },
 	    'addparents': {
 	      'text': '\uf062',
-	      'title': 'add parents',
+	      'title': 'Aggiungi genitori',
 	      'fx': -0.75 * opts.symbol_size,
 	      'fy': -opts.symbol_size + 11
 	    },
 	    'delete': {
 	      'text': 'X',
-	      'title': 'delete',
+	      'title': 'Elimina',
 	      'fx': opts.symbol_size / 2 - 1,
 	      'fy': -opts.symbol_size + 12,
 	      'styles': {
@@ -2913,7 +2913,7 @@ var pedigreejs = (function (exports) {
 	  if (opts.edit) {
 	    widgets.settings = {
 	      'text': '\uf013',
-	      'title': 'settings',
+	      'title': 'Dettagli',
 	      'fx': -font_size / 2 + 2,
 	      'fy': -opts.symbol_size + 11
 	    };
@@ -3037,7 +3037,7 @@ var pedigreejs = (function (exports) {
 	function drag_handle(opts) {
 	  let line_drag_selection = d3.select('.diagram');
 	  let dline = line_drag_selection.append("line").attr("class", 'line_drag_selection').attr("stroke-width", 6).style("stroke-dasharray", "2, 1").attr("stroke", "black").call(d3.drag().on("start", dragstart).on("drag", drag).on("end", dragstop));
-	  dline.append("svg:title").text("drag to create consanguineous partners");
+	  dline.append("svg:title").text("Trascina su un altro parente per creare una relazione");
 	  setLineDragPosition(0, 0, 0, 0);
 	  function dragstart() {
 	    dragging = last_mouseover;
@@ -3427,7 +3427,7 @@ var pedigreejs = (function (exports) {
 	  if (uc.length > 0) {
 	    // check & warn only if this is a new split
 	    if (unconnected(opts.dataset).length === 0) {
-	      console.error("individui sconnessi dal pedigree ", uc);
+	      console.error("Individui sconnessi dal pedigree ", uc);
 	      messages("Attenzione", "L'eliminazione dividerà il pedigree. Vuoi procedere?", onDone, opts, dataset);
 	      return;
 	    }
